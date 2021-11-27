@@ -2,7 +2,7 @@ from flask.app import Flask
 from flask.templating import render_template
 from flask import request
 
-from lib.query import get_results
+from lib.query import get_results, get_show_data
 
 app = Flask(__name__)
 
@@ -14,11 +14,19 @@ def root():
 
 @app.post("/query")
 @app.errorhandler(400)
-@app.errorhandler(404)
 def make_query():
     try:
-        query = request.form['query']
+        query = request.form["query"]
     except KeyError:
         return "Invalid Query", 400
-    results = get_results(query)
-    return render_template("results.html", results=results)
+    res = get_results(query)
+    res['query'] = query
+    return render_template("results.html", results=res)
+
+
+@app.get("/show/<show_id>")
+def render_show(show_id=None):
+    show = get_show_data(show_id)
+    show['num_actors'] = len(show['actors'])
+    show['num_directors'] = len(show['directors'])
+    return render_template("show.html", show=show)

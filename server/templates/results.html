@@ -15,6 +15,33 @@
     * {
       font-family: Kollektif, Inter, sans-serif;
     }
+
+    body {
+      background-color: #111111;
+      color: white;
+    }
+
+    h2 {
+      color: #DE0913;
+    }
+
+    #search-bar {
+      background-color: #222222;
+      color: white;
+      border-color: #aaaaaa;
+    }
+
+    .link-primary {
+      color: #5FD0F7;
+    }
+
+    .link-primary:hover {
+      color: #ffffff;
+    }
+
+    .link-primary:visited {
+      color: #5FD0F7;
+    }
   </style>
 </head>
 
@@ -23,24 +50,84 @@
     <a href="/" style="text-decoration: none; color: black;" class="mr-2">
       <h2 class="m-0">Netflix Search</h2>
     </a>
-    <form action="/query" method="post" class="mx-3 d-flex align-items-center">
-      <input value="{{ query }}" type="text" name="query" class="form-control me-2" id="search-bar"
+    <form action="/query" method="post" class="mx-3 d-flex align-items-center" autocomplete="off">
+      <input value="{{ results.query }}" type="text" name="query" class="form-control me-2" id="search-bar"
         placeholder="Search here..." style="min-width: 40vw;" required />
-      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="submit" class="btn btn-danger">Search</button>
     </form>
   </header>
   <hr>
   <main class="py-2 px-3">
     <h5>Search Results</h5>
-    <ul class="mt-3" style="list-style-type: none;">
-      {% for result in results %}
-      <li class="mb-3">
-        <a href="{{ result.link }}" class="link-primary" target="_blank">{{ result.title }}</a>
-        <p>{{ result.description }}</p>
-        <p>{{ result.date }}</p>
+    <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="titles-tab" data-bs-toggle="tab" data-bs-target="#titles" type="button"
+          role="tab" aria-controls="titles" aria-selected="true">
+          Titles
+        </button>
       </li>
-      {% endfor %}
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab"
+          aria-controls="actors" aria-selected="false">
+          Actors
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="directors-tab" data-bs-toggle="tab" data-bs-target="#directors" type="button"
+          role="tab" aria-controls="directors" aria-selected="false">
+          Directors
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="categories-tab" data-bs-toggle="tab" data-bs-target="#categories" type="button"
+          role="tab" aria-controls="categories" aria-selected="false">
+          Categories
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="descriptions-tab" data-bs-toggle="tab" data-bs-target="#descriptions" type="button"
+          role="tab" aria-controls="descriptions" aria-selected="false">
+          Descriptions
+        </button>
+      </li>
     </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="titles" role="tabpanel" aria-labelledby="titles-tab">
+        {% for x in results.title %}
+        <li class="mt-3">
+          <a href="/show/{{ x.id }}" class="link-primary" target="_blank">{{ x.title }}</a>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">
+        {% for x in results.actors %}
+        <li class="mt-3">
+          <a href="/show/{{ x.id }}" class="link-primary" target="_blank">{{ x.title }}</a>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
+        {% for x in results.directors %}
+        <li class="mt-3">
+          <a href="/show/{{ x.id }}" class="link-primary" target="_blank">{{ x.title }}</a>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+        {% for x in results.categories %}
+        <li class="mt-3">
+          <a href="/show/{{ x.id }}" class="link-primary" target="_blank">{{ x.title }}</a>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="tab-pane fade" id="descriptions" role="tabpanel" aria-labelledby="descriptions-tab">
+        {% for x in results.descriptions %}
+        <li class="mt-3">
+          <a href="/show/{{ x.id }}" class="link-primary" target="_blank">{{ x.title }}</a>
+        </li>
+        {% endfor %}
+      </div>
+    </div>
   </main>
 </body>
 

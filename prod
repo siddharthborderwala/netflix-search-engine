@@ -1,0 +1,16 @@
+#! /usr/bin/bash
+
+# clean the date
+py scripts/clean.py
+
+# train the model
+py scripts/train.py
+
+# build the indices
+py scripts/build_index.py
+
+# set flask environment
+export FLASK_ENV=production
+
+# spin up the server
+py main.py

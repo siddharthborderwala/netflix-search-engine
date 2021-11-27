@@ -17,6 +17,20 @@
     * {
       font-family: Kollektif, Inter, sans-serif;
     }
+
+    body > div {
+      background-color: #111111;
+    }
+
+    h1 {
+      color: #DE0913;
+    }
+
+    #search-bar {
+      background-color: #222222;
+      color: white;
+      border-color: #aaaaaa;
+    }
   </style>
 </head>
 
@@ -24,11 +38,11 @@
   <div class="d-flex align-items-center pb-5" style="height: 100vh;">
     <div class="container" style="width: 60%;">
       <h1>Netflix Search</h1>
-      <form action="/query" method="post" class="mt-3">
+      <form action="/query" method="post" class="mt-3" autocomplete="off">
         <div class="me-2">
-          <input type="text" name="query" class="form-control" id="search-bar" placeholder="Search here..." required />
+          <input autocomplete="off" type="text" name="query" class="form-control" id="search-bar" placeholder="Search here..." required />
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Search</button>
+        <button type="submit" class="btn btn-danger mt-3">Search</button>
       </form>
     </div>
 </body>
