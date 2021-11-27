@@ -72,6 +72,7 @@ def intersect_by_id(a1, a2):
 
 
 def get_res_element(x):
+    x = int(x)
     return {
         'id': x,
         'title': df.at[x - 1 if x != 0 else 0, 'title'],
