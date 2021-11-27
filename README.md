@@ -10,7 +10,7 @@ The aim is to build a search engine for netflix shows, based on topics learnt th
 
 ## Usage
 
-First clone the repo and using `pip` install all the dependencies as mentioned in [requirements.txt](./requirements.txt)
+First clone the repo and using `pip` install all the dependencies as mentioned in [requirements.txt](./requirements.txt) in a virtual environment.
 
 For development mode, run 
 
