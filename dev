@@ -1,13 +1,13 @@
 #! /usr/bin/bash
 
 # clean the data
-# py scripts/clean.py
+py scripts/clean.py
 
 # train the model
-# py scripts/train.py
+py scripts/train.py
 
 # build the indices
-# py scripts/build_index.py
+py scripts/build_index.py
 
 # set flask environment
 export FLASK_ENV=development
