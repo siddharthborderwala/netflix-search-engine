@@ -1,4 +1,3 @@
-import csv
 import time
 import gensim
 import pandas as pd
@@ -14,8 +13,8 @@ if __name__ == '__main__':
     for row in rows.itertuples():
         tokens = gensim.utils.simple_preprocess(row.plot)
         corpus.append(gensim.models.doc2vec.TaggedDocument(tokens, [row.id]))
-    print(len(corpus))
     model.build_vocab(corpus)
     model.save("models/doc2vec.model")
-    print(len(model.dv))
+    print("Corpus length:\t" + str(len(corpus)))
+    print("Number of doc vectors:\t" + str(len(model.dv)))
     print("Created model in {:.2f}s.".format(time.time() - start))
