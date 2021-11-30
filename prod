@@ -13,4 +13,4 @@ py scripts/build_index.py
 export FLASK_ENV=production
 
 # spin up the server
-py main.py
+py server.py
