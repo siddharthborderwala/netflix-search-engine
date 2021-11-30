@@ -8,6 +8,8 @@ In this project, I have created an IR system for semi-structured data, in this c
 
 The aim is to build a search engine for netflix shows, based on topics learnt throughout the information retrieval course and some concepts of natural language processing.
 
+This project is also an example of domain-specific information retrieval, as while creating the IR system, I took into account the kind of data present in the CSV file and the kinds of queries a user may make.
+
 ## Usage
 
 First clone the repo and using `pip` install all the dependencies as mentioned in [requirements.txt](./requirements.txt) in a virtual environment.
